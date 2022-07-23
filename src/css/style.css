@@ -1,0 +1,234 @@
+body {
+  padding: 0;
+  margin: 0;
+  color: #172b4d;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans,
+    Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+body._grabbing {
+  cursor: grabbing !important;
+}
+
+body._grabbing * {
+  cursor: grabbing !important;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+._hide {
+  display: none !important;
+}
+
+.trello {
+  padding: 30px;
+  background-color: #9b9b9b;
+  height: 100vh;
+}
+
+.trello__boards {
+  display: flex;
+  align-items: flex-start;
+}
+
+.trello__board {
+  border-radius: 3px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: auto;
+  max-height: 100%;
+  position: relative;
+  white-space: normal;
+  width: 272px;
+  padding: 10px;
+  background-color: #ebecf0;
+}
+
+.trello__board:nth-child(n + 2) {
+  margin-left: 20px;
+}
+
+.trello__title {
+  background: #0000;
+  border-radius: 3px;
+  box-shadow: none;
+  font-weight: 600;
+  font-size: 20px;
+  height: 20px;
+  margin: 0 0 20px;
+  max-height: 256px;
+  min-height: 20px;
+  padding: 4px 8px;
+  resize: none;
+}
+
+.trello__card {
+  position: relative;
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 #091e4240;
+  display: block;
+  margin-bottom: 8px;
+  max-width: 252px;
+  min-height: 20px;
+  position: relative;
+  text-decoration: none;
+  z-index: 0;
+  padding: 10px 38px 10px 10px;
+  cursor: pointer;
+}
+
+.trello__card._drag {
+  position: absolute;
+  z-index: 999;
+  pointer-events: none;
+  cursor: grabbing;
+}
+
+.trello__card._ghost {
+  background: #dddddd !important;
+  box-shadow: none !important;
+  color: #dddddd !important;
+  pointer-events: none !important;
+}
+
+.trello__card-text {
+  pointer-events: none;
+}
+
+.trello__delete-card {
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1;
+  top: 7px;
+  right: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  border-radius: 3px;
+  font-size: 26px;
+  transition: all 0.3s ease;
+}
+
+.trello__card:hover
+  .trello__delete-card:not(.trello__card._ghost:hover .trello__delete-card) {
+  opacity: 1;
+  visibility: visible;
+}
+
+.trello__delete-card:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.trello__delete-card span {
+  position: relative;
+  top: -2px;
+  left: 2px;
+  line-height: 0;
+  transform: rotate(45deg);
+  pointer-events: none;
+}
+
+.trello__add-card {
+  border-radius: 3px;
+  color: #5e6c84;
+  background-color: unset;
+  display: flex;
+  font-size: 16px;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px;
+  position: relative;
+  text-decoration: none;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  border: none;
+  line-height: 1;
+  transition: all 0.3s ease;
+}
+
+.trello__add-card * {
+  pointer-events: none;
+}
+
+.trello__add-card:hover {
+  background-color: #c7c7c777;
+}
+
+.trello__plus {
+  font-size: 26px;
+  line-height: 0;
+  margin-right: 10px;
+}
+
+.trello__textarea {
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 #091e4240;
+  display: block;
+  margin-bottom: 8px;
+  max-width: 252px;
+  min-width: 252px;
+  min-height: 40px;
+  height: auto;
+  position: relative;
+  text-decoration: none;
+  z-index: 0;
+  padding: 10px;
+  border: none;
+  appearance: none;
+  resize: none;
+  font-size: inherit;
+  font-family: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+}
+
+.trello__textarea:focus {
+  outline: none;
+}
+
+.trello__add-card-button {
+  align-items: center;
+  border-radius: 3px;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans,
+    Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  justify-content: center;
+  line-height: 20px;
+  padding: 6px 12px;
+  text-decoration: none;
+  transition-duration: 85ms;
+  transition-property: background-color, border-color, box-shadow;
+  transition-timing-function: ease;
+  white-space: normal;
+  margin-bottom: 0;
+  margin-top: 0;
+  vertical-align: top;
+  background-color: #0079bf;
+  border: none;
+  box-shadow: none;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.trello__add-card-button:hover {
+  background-color: #026aa7;
+  border: none;
+  box-shadow: none;
+  color: #fff;
+}
