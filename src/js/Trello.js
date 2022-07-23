@@ -4,12 +4,12 @@ export default class Trello {
   constructor() {
     this.localStorage = new LocalStorage();
     this.trello = document.querySelector('.js-trello');
-    this.draggedCard = null; // Запись перетаскиваемой карточки;
-    this.clonedCard = null; // Запись клонированной карточки;
-    this.offsetCardClickX = null; // позиция курсора по оси X в момент клика
-    // по перетаскиваемой карточке;
-    this.offsetCardClickY = null; // позиция курсора по оси Y в момент клика по
-    // перетаскиваемой карточке;
+    this.draggedCard = null; // Сюда записывается перетаскиваемая карточка;
+    this.clonedCard = null; // Сюда записывается клонированная карточка;
+    this.offsetCardClickX = null; // Сюда записывается позиция курсора по оси X в
+    // момент клика по перетаскиваемой карточке;
+    this.offsetCardClickY = null; // Сюда записывается позиция курсора по оси Y в
+    // момент клика по перетаскиваемой карточке;
     this.isFirstClick = true; // Сюда записываем
     this.addEventsToBoards = this.addEventsToBoards.bind(this);
   }
@@ -108,13 +108,13 @@ export default class Trello {
       }
     });
 
-    this.trello.addEventListener('mouseleave', () => {
+    this.trello.addEventListener('mouseleave', (e) => {
       if (!this.draggedCard) return;
       if (this.draggedCard) this.draggedCard.classList.remove('_ghost');
       this.dropGrabbingCard();
     });
 
-    this.trello.addEventListener('mouseup', () => {
+    this.trello.addEventListener('mouseup', (e) => {
       if (!this.draggedCard) return;
       if (this.draggedCard) {
         this.draggedCard.classList.remove('_ghost');
@@ -125,12 +125,12 @@ export default class Trello {
   }
 
   removeActiveTextarea() {
-    this.activeTextarea = document.querySelector('.js-textarea');
-    if (this.activeTextarea) this.activeTextarea.remove();
+    const activeTextarea = document.querySelector('.js-textarea');
+    if (activeTextarea) activeTextarea.remove();
   }
 
   showAddCardPanel(buttonShowTextarea) {
-    this.buttonShowTextarea.classList.add('_hide');
+    buttonShowTextarea.classList.add('_hide');
     const board = buttonShowTextarea.closest('.js-board');
     const addCardButton = document.createElement('button');
     addCardButton.type = 'button';
@@ -140,9 +140,9 @@ export default class Trello {
   }
 
   hideAddCardPanel() {
-    this.buttonShowTextarea = document.querySelector('.js-add-textarea._hide');
+    const buttonShowTextarea = document.querySelector('.js-add-textarea._hide');
     const addCardButton = document.querySelector('.js-add-card-button');
-    if (this.buttonShowTextarea) this.buttonShowTextarea.classList.remove('_hide');
+    if (buttonShowTextarea) buttonShowTextarea.classList.remove('_hide');
     if (addCardButton) addCardButton.remove();
   }
 
